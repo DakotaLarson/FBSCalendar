@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+    <link href="master.css" rel="stylesheet"/>
+    <title>Calendar</title>
+</head>
+<body>
+    <div id="topBar">
+        <select id="viewSelect">
+            <option selected>Month</option>
+            <option>Day</option>
+        </select>
+        <span id="title"></span>
+    </div>
+    <div id="monthView">
+        <div class="dayTitleParent"><div class="dayTitle">Sunday</div></div>
+        <div class="dayTitleParent"><div class="dayTitle">Monday</div></div>
+        <div class="dayTitleParent"><div class="dayTitle">Tuesday</div></div>
+        <div class="dayTitleParent"><div class="dayTitle">Wednesday</div></div>
+        <div class="dayTitleParent"><div class="dayTitle">Thursday</div></div>
+        <div class="dayTitleParent"><div class="dayTitle">Friday</div></div>
+        <div class="dayTitleParent"><div class="dayTitle">Saturday</div></div>
+    </div>
+    <div id="dayView"></div>
+    <div id="newEventParent">
+        <div class="newEvent">
+            <input type="text" id="newEventTitle" placeholder="Event Name"/><br/>
+            <select id="startSelect">
+                <option>6:00AM</option>
+                <option>7:00AM</option>
+                <option>8:00AM</option>
+                <option>9:00AM</option>
+                <option>10:00AM</option>
+                <option>11:00AM</option>
+                <option>12:00PM</option>
+                <option>1:00PM</option>
+                <option>2:00PM</option>
+                <option>3:00PM</option>
+                <option>4:00PM</option>
+                <option>5:00PM</option>
+                <option>6:00PM</option>
+                <option>7:00PM</option>
+                <option>8:00PM</option>
+                <option>9:00PM</option>
+                <option>10:00PM</option>
+                <option>11:00PM</option>
+            </select>
+            <select id="stopSelect">
+                <option>7:00AM</option>
+                <option>8:00AM</option>
+                <option>9:00AM</option>
+                <option>10:00AM</option>
+                <option>11:00AM</option>
+                <option>12:00PM</option>
+                <option>1:00PM</option>
+                <option>2:00PM</option>
+                <option>3:00PM</option>
+                <option>4:00PM</option>
+                <option>5:00PM</option>
+                <option>6:00PM</option>
+                <option>7:00PM</option>
+                <option>8:00PM</option>
+                <option>9:00PM</option>
+                <option>10:00PM</option>
+                <option>11:00PM</option>
+                <option>12:00AM</option>
+            </select><br/>
+            <button type="button" class="newEventBtn" id="newEventSubmit">Create Event</button>
+            <button type="button" class="newEventBtn" id="newEventCancel">Cancel</button><br/>
+            <span id="newEventErr">&nbsp</span>
+        </div>
+    </div>
+    <script src="jquery-3.2.1.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

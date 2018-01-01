@@ -1,0 +1,142 @@
+body, html {
+    background-color: #101010;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+}
+#monthView, #dayView {
+    display: grid;
+    height: 95vh;
+    box-sizing: border-box;
+}
+#monthView {
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 5vh repeat(6, 1fr);
+    text-align: left;
+    border-left: solid 1px #d5d5d5;
+    border-top: solid 1px #d5d5d5;
+}
+#dayView {
+    display: none;
+    border: solid 1px #d5d5d5;
+}
+#topBar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 5vh;
+    justify-items: center;
+}
+#title {
+    color: #d5d5d5;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3vh;
+}
+#viewSelect, #startSelect, #stopSelect {
+    display: inline;
+    padding: 0 10px;
+    background-color: #303030;
+    color: #d5d5d5;
+    font-family: 'Open Sans', sans-serif;
+    outline: none;
+    font-size: 20px;
+    border: none;
+}
+.day {
+    padding: 5px;
+    color: #f0f0f0;
+    border-right: solid 1px #d5d5d5;
+    border-bottom: solid 1px #d5d5d5;
+    font-family: 'Open Sans', sans-serif;
+}
+.day:hover, .today {
+   background-color: #202020;
+}
+.otherMonth {
+    color: #909090;
+}
+.dayTitleParent {
+    border-bottom: solid 1px #d5d5d5;
+    text-align: center;
+}
+.dayTitle {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #d5d5d5;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2vmin;
+}
+.dayTitleParent:nth-child(7) {
+    border-right: solid 1px #d5d5d5;
+}
+.hour {
+    border-bottom: solid 1px #808080;
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    color: #f0f0f0;
+    text-align: left;
+    display: flex;
+}
+.hour:last-child {
+    border-bottom: none;
+}
+#newEventParent {
+    display: none;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.newEvent {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #505050;
+    padding: 30px;
+}
+#newEventTitle, .newEventBtn {
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    outline: none;
+    background-color: #303030;
+    color: #d5d5d5;
+    border: none;
+}
+.newEventBtn {
+    margin-top: 15px;
+}
+.newEventBtn:hover {
+    background-color: #d5d5d5;
+    color: #303030;
+}
+#newEventTitle {
+    margin-bottom: 15px;
+}
+#newEventErr {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: red
+}
+.eventParent {
+    display: inline-block;
+    z-index: 1;
+    width: 10%;
+    background-color: antiquewhite;
+    color: #202020;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    padding: 0 5px;
+}
+.time {
+    padding: 5px;
+    box-sizing: border-box;
+    width: 60px;
+    display: inline-block;
+    height: 100%;
+}
