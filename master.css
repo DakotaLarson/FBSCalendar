@@ -127,6 +127,8 @@ body, html {
     display: inline-block;
     z-index: 1;
     width: 10%;
+    box-sizing: border-box;
+    position: relative;
     background-color: antiquewhite;
     color: #202020;
     font-family: 'Open Sans', sans-serif;

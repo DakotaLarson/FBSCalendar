@@ -53,7 +53,7 @@ function layoutMonth(month, day, year){
     }
     $('.day').click(function(event){
         viewSelect.val('Day');
-        layoutDay(new Date(Date.parse(event.target.id)));
+        layoutDay(new Date(Date.parse(event.target.id.replace(/-/g, ' '))));
     });
     dayView.css('display', 'none');
     monthView.css('display', 'grid');
@@ -184,6 +184,8 @@ function handleNewEventSubmission(){
     }
 }
 function layoutEvents(){
+    let dayEvents = [];
+    let hourWidths = {};
     dayView.find('.eventParent').remove();
     events.forEach(function(event){
         let start = event.startTime;
@@ -191,15 +193,70 @@ function layoutEvents(){
         if(start.getFullYear() === selectedDate.getFullYear()
         && start.getMonth() === selectedDate.getMonth()
         && start.getDate() === selectedDate.getDate()){
+            dayEvents.push(event);
             let startTime = start.getHours();
             let stopTime = stop.getHours();
             if(stopTime === 0) stopTime = 24;
+            let maxSide = 0;
+            for(let i = startTime; i < stopTime; i ++){
+                if(hourWidths.hasOwnProperty(i)){
+                    maxSide = Math.max(hourWidths[i], maxSide);
+                    hourWidths[i] = hourWidths[i] + 1;
+                }else{
+                    hourWidths[i] = 1;
+                }
+            }
+            let left = maxSide;
+            // if(hourWidths.hasOwnProperty(startTime)){
+            //     left = maxSide - hourWidths[startTime] + 1;
+            // }else{
+            //     left = maxSide;
+            // }
+            console.log(left + ' ' + maxSide);
+            for(let i = startTime; i < stopTime; i ++){
+                if(hourWidths.hasOwnProperty(i)){
+                    hourWidths[i] = Math.max(left + 1, hourWidths[i]);
+                }else{
+                    hourWidths[i] = left + 1;
+                }
+            }
             let eventDiv = $('<div class="eventParent"></div>');
             eventDiv.text(event.title);
             let totalTime = stopTime - startTime;
-            let heightCSS = 'calc(' + totalTime + '00% + ' + (totalTime - 1) + 'px)';
+            let heightCSS = totalTime + '00%';
             eventDiv.css('height', heightCSS);
+            eventDiv.css('left', left + '0%');
             $('#' + startTime).append(eventDiv);
         }
     });
+    // for(let i = 0; i < dayEvents.length; i ++){
+    //
+    // }
+    // dayEvents.forEach(function(event){
+    //     let start = event.startTime;
+    //     let stop = event.stopTime;
+    //     let startTime = start.getHours();
+    //     let stopTime = stop.getHours();
+    //     if(stopTime === 0) stopTime = 24;
+    //     if(eventGrid.length === 0){
+    //         eventGrid[0] = [];
+    //         for(let i = startTime; i < stopTime; i ++){
+    //             eventGrid[0].push(i);
+    //         }
+    //     }else{
+    //         let latestCol = eventGrid[eventGrid.length - 1];
+    //         for(let i = startTime; i < stopTime; i ++){
+    //             if(latestCol.indexOf(i) > 0) {
+    //                 //add column
+    //                 latestCol = [];
+    //                 eventGrid.push(latestCol);
+    //                 break;
+    //             }
+    //         }
+    //         for(let i = startTime; i < stopTime; i ++){
+    //             latestCol.push(i);
+    //         }
+    //     }
+    // });
+
 }
